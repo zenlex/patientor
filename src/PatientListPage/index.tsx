@@ -58,6 +58,7 @@ const PatientListPage = () => {
             <TableCell>Gender</TableCell>
             <TableCell>Occupation</TableCell>
             <TableCell>Health Rating</TableCell>
+            <TableCell>hello</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -69,6 +70,9 @@ const PatientListPage = () => {
               <TableCell>{patient.occupation}</TableCell>
               <TableCell>
                 <HealthRatingBar showText={false} rating={1} />
+              </TableCell>
+              <TableCell>
+                <Button component={Link} to={`/${patient.id}`} >Show</Button>
               </TableCell>
             </TableRow>
           ))}
