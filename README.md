@@ -1,4 +1,6 @@
-# Patientor - frontend. Skeleton forked from Full Stack Open Curriculum. [Backend Code](https://www.github.com/zenlex/fso-patientor)
+# Patientor - frontend. Skeleton forked from Full Stack Open Curriculum. 
+
+[Backend Code](https://www.github.com/zenlex/fso-patientor)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
