@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { apiBaseUrl } from "../constants";
-import { useStateValue } from '../state';
+import { useStateValue, cachePatientDetails } from '../state';
 import { Patient } from '../types';
 const PatientInfo = () => {
   const [{ patients }, dispatch] = useStateValue();
@@ -19,7 +19,7 @@ const PatientInfo = () => {
       const fetchPatientDetails = async (id: string) => {
         try {
           const { data: updatedPatient } = await axios.get<Patient>(`${apiBaseUrl}/patients/${id}`);
-          dispatch({ type: 'CACHE_PATIENT_DETAILS', payload: updatedPatient });
+          dispatch(cachePatientDetails(updatedPatient));
         } catch (e) {
           console.error(e);
         }
