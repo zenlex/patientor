@@ -9,6 +9,7 @@ import { Gender, Patient } from "../types";
  * use type Patient, but omit id and entries,
  * because those are irrelevant for new patient object.
  */
+
 export type PatientFormValues = Omit<Patient, "id" | "entries">;
 
 interface Props {
