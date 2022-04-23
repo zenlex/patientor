@@ -69,11 +69,14 @@ export const reducer = (state: State, action: Action): State => {
       //TODO: update state by adding entry
       const { patientId, newEntry }: { patientId: string; newEntry: Entry } =
         action.payload;
-      console.log({ patientId, newEntry });
       return {
         ...state,
         patients: {
           ...state.patients,
+          [patientId]: {
+            ...state.patients[patientId],
+            entries: [...state.patients[patientId].entries, newEntry],
+          },
         },
       };
     default:

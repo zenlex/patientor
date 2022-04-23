@@ -20,7 +20,11 @@ import { EntryFormValues } from '../AddEntryModal/AddEntryForm';
 
 const PatientInfo = () => {
   const [{ patients, diagnoses }, dispatch] = useStateValue();
+  //TODO: refactor fetch patients and diagnoses to service from App.tsx then check here for data presence and if non-existent refetch
   const { id } = useParams<{ id: string }>();
+  if (!id) throw new Error('invalid ID');
+  const patient = patients[id];
+  if (!patient) throw new Error('patient undefined');
 
   const [modalOpen, setModalOpen] = React.useState<boolean>(false);
   const [error, setError] = React.useState<string>();
@@ -31,13 +35,6 @@ const PatientInfo = () => {
     setModalOpen(false);
     setError(undefined);
   };
-
-  let patient: Patient;
-  if (id) {
-    patient = patients[id];
-  } else {
-    return <div>invalid patient id</div>;
-  }
 
   useEffect(() => {
     if (patient && (!patient.ssn || !patient.dateOfBirth)) {
